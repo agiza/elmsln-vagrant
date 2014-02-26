@@ -57,12 +57,14 @@ Vagrant::Config.run do |config|
         }
       })
   end
+  config.vm.provision "shell",
+    inline: "Cloning ELMSLN repos and attempting auto installation"
   # script to get elmsln fresh from source
-  $script = "echo I am provisioning...
-    cd /var/www
+  $script = "cd /var/www
     git clone https://github.com/btopro/elmsln.git elmsln
     cd elmsln
-    cp config/scripts/drush-create-site/config.cfg.example config/scripts/drush-create-site/config.cfg
+    rm -r -f config
+    git clone https://github.com/btopro/elmsln-config-vagrant.git config
     bash scripts/install/elmsln-install.sh"
   config.vm.provision "shell", inline: $script
 
