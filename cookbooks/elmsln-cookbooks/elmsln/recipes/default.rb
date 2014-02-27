@@ -15,7 +15,7 @@ when "debian", "ubuntu"
   # make a shortcut in home directory to elmsln instance
   bash "make-elmsln-symlink" do
     code <<-EOH
-    (ln -s /var/www/elmsln ~/elmsln)
+    (ln -s /var/www/elmsln /home/vagrant/elmsln)
     EOH
     not_if { File.exists?("/var/www/elmsln") }
   end
