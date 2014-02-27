@@ -58,15 +58,10 @@ Vagrant::Config.run do |config|
         },
         :drush => {
           :install_method => 'pear',
-          :version => '6.2.0',
+          :version => '6.2.0'
         }
       })
   end
-  config.vm.provision "shell",
-    inline: "echo Attempting automatic installation"
-  # script to get elmsln fresh from source
-  $script = "bash scripts/install/elmsln-install.sh"
-  config.vm.provision "shell", inline: $script
   config.vm.provision "shell",
     inline: "Welcome to the Singularity of edtech."
 end
