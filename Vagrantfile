@@ -4,8 +4,8 @@ Vagrant::Config.run do |config|
   # online.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "precise32"
-  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+  config.vm.box = "precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   # config.vm.boot_mode = :gui
 
   # Memory setting for Vagrant < 0.90
@@ -47,7 +47,7 @@ Vagrant::Config.run do |config|
     chef.add_role("elmsln_dev")
 
     chef.json.merge!({
-        :www_root => '/vagrant/public',
+        :www_root => '/var/www/elmsln/domains',
         :mysql => {
           :server_root_password => "986107L4R3a2T5uicsOy",
           :allow_remote_root => true,
@@ -62,10 +62,8 @@ Vagrant::Config.run do |config|
         }
       })
   end
-  config.vm.provision "shell",
-    inline: "bash /var/www/elmsln/scripts/install/elmsln-install.sh"
-  config.vm.provision "shell",
-    inline: "Welcome to the Singularity of edtech."
+  #config.vm.provision "shell",
+  #  inline: "bash /var/www/elmsln/scripts/install/elmsln-install.sh"
 end
 
 # Returns true if we are running on a MS windows platform, false otherwise.
