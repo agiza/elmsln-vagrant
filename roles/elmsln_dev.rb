@@ -8,5 +8,5 @@ run_list(
   "role[mysql_server]",
   "recipe[drupal::multisite]",
   "recipe[elmsln]",
-  "recipe[elmsln-config-vagrant]",
+  "recipe[elmsln-config-vagrant]"
 )
