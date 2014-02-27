@@ -32,7 +32,7 @@ Vagrant::Config.run do |config|
 
   config.vm.provision :chef_solo do |chef|
     # This path will be expanded relative to the project directory
-    chef.cookbooks_path = ["cookbooks/site-cookbooks", "cookbooks/drupal-cookbooks"]
+    chef.cookbooks_path = ["cookbooks/site-cookbooks", "cookbooks/drupal-cookbooks", "cookbooks/elmsln-cookbooks"]
 
     chef.add_recipe("vim")
 
