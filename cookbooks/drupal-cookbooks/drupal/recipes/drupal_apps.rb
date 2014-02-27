@@ -7,9 +7,9 @@ if node[:hosts].has_key(:localhost_aliases)
     # Configure the development site
     web_app site do
       template "sites.conf.erb"
-      server_name "{site}.elmsln"
-      server_aliases ["{site}.elmsln"]
-      docroot "#{node[:www_root]}/{site}"
+      server_name site + ".elmsln"
+      server_aliases [site + ".elmsln", "data." + site + ".elmsln"]
+      docroot "#{node[:www_root]}" + '/' + site
     end
   end
 end

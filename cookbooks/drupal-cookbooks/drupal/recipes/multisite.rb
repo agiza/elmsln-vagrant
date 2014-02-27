@@ -1,5 +1,4 @@
 # Automatically prepare vhosts for drupal sites.
-# TODO Make this configurable per host.
 require_recipe "hosts"
 require_recipe "apache2"
 
@@ -9,9 +8,9 @@ if node[:hosts].has_key(:localhost_aliases)
     web_app site do
       port "80"
       template "sites.conf.erb"
-      server_name site
-      server_aliases [site, "*." + site]
-      docroot "#{node[:www_root]}"
+      server_name site + ".elmsln"
+      server_aliases [site + ".elmsln", "data." + site + ".elmsln"]
+      docroot "#{node[:www_root]}" + '/' + site
     end
   end
 end
