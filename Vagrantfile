@@ -49,7 +49,7 @@ Vagrant::Config.run do |config|
           :bind_address => "0.0.0.0"
         },
         :hosts => {
-          :localhost_aliases => ["dev-site.vm"]
+          :localhost_aliases => ["online.vm", "courses.vm", "studio.vm", "interact.vm", "analytics.vm", "media.vm"]
         },
         :drush => {
           :install_method => 'pear',
