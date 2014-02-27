@@ -9,7 +9,7 @@ VirtualBox Vagrant Chef Drupal ELMSLN install
     vagrant up`
 4. Add this line to your /etc/hosts (or windows equivalent):
 
-...
+```
 # ELMSLN development
 
 # front facing addresses
@@ -27,7 +27,7 @@ VirtualBox Vagrant Chef Drupal ELMSLN install
 10.0.0.13       data.analytics.elmsln
 10.0.0.14       data.studio.elmsln
 10.0.0.15       data.interact.elmsln
-...
+```
 
 Now you'll be able to jump into any of the domains that ELMSLN starts to establish for use!  Go to http://online.elmsln/ to get started, though if everything went well you'll be presented with a new drupal site running the CIS distribution.
 
