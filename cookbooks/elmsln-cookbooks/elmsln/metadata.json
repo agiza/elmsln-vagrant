@@ -1,0 +1,39 @@
+{
+  "recipes": {
+    "elmsln": "Installs ELMSLN"
+  },
+  "attributes": {
+  },
+  "providing": {
+  },
+  "dependencies": {
+  },
+  "maintainer": "Bryan Ollendyke",
+  "replacing": {
+  },
+  "maintainer_email": "bto108@psu.edu",
+  "groupings": {
+  },
+  "platforms": {
+    "debian": [
+
+    ],
+    "arch": [
+
+    ],
+    "ubuntu": [
+
+    ]
+  },
+  "license": "GPL 2.0",
+  "version": "1.0.0",
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "name": "elmsln",
+  "long_description": "",
+  "description": "Installs ELMSLN master",
+  "conflicting": {
+  }
+}
