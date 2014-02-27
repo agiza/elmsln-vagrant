@@ -5,13 +5,11 @@ require_recipe "apache2"
 if node[:hosts].has_key(:localhost_aliases)
   node[:hosts][:localhost_aliases].each do |site|
     # Configure the development site
-    stack = site.split('.').first
-    stackaddy = stack + '.elmsln'
     web_app site do
       template "sites.conf.erb"
-      server_name stackaddy
-      server_aliases [stackaddy]
-      docroot "#{node[:www_root]}/{stack}"
+      server_name "{site}.elmsln"
+      server_aliases ["{site}.elmsln"]
+      docroot "#{node[:www_root]}/{site}"
     end
   end
 end

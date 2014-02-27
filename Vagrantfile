@@ -54,7 +54,7 @@ Vagrant::Config.run do |config|
           :bind_address => "0.0.0.0"
         },
         :hosts => {
-          :localhost_aliases => ["online.vm", "courses.vm", "studio.vm", "interact.vm", "analytics.vm", "media.vm"]
+          :localhost_aliases => ["online", "courses", "studio", "interact", "analytics", "media"]
         },
         :drush => {
           :install_method => 'pear',
