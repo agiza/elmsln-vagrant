@@ -16,7 +16,7 @@ when "debian", "ubuntu"
   end
   # check out this specific config
   git "/var/www/elmsln/config" do
-    repository "https://github.com/btopro/elmsln-config-vagrant.git"
+    repository "git://github.com/btopro/elmsln-config-vagrant.git"
     reference "master"
     action :sync
   end

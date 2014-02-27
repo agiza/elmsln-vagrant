@@ -8,7 +8,7 @@
 case node[:platform]
 when "debian", "ubuntu"
   git "/var/www/elmsln" do
-    repository "https://github.com/btopro/elmsln.git"
+    repository "git://github.com/btopro/elmsln.git"
     reference "master"
     action :sync
   end
