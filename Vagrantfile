@@ -58,7 +58,7 @@ Vagrant::Config.run do |config|
       })
   end
   config.vm.provision "shell",
-    inline: "Cloning ELMSLN repos and attempting auto installation"
+    inline: "echo Cloning ELMSLN repos and attempting auto installation"
   # script to get elmsln fresh from source
   $script = "cd /var/www
     git clone https://github.com/btopro/elmsln.git elmsln
