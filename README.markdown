@@ -1,7 +1,6 @@
 # What
 VirtualBox Vagrant Chef Drupal ELMSLN install
 
-
 # How
 1. Download and Install [VirtualBox](http://www.virtualbox.org/) (ensure you are on the latest version 4.0.8+)
 2. Install [vagrant](http://vagrantup.com/v1/docs/getting-started/index.html)
@@ -16,8 +15,7 @@ VirtualBox Vagrant Chef Drupal ELMSLN install
 10.0.0.14       studio.elmsln
 10.0.0.15       interact.elmsln
 
-
-That's it, files in "public" are served here : [http://dev-site.local/](http://dev-site.local/), and if you have a new MySQL database and drop a copy of Drupal into the public directory, you'll be ready to go.
+Now you'll be able to jump into any of the domains that ELMSLN starts to establish for use!  Go to http://online.elmsln/ to get started, though if everything went well you'll be presented with a new drupal site running the CIS distribution.
 
 To connect to the console of you instance:
     `vagrant ssh`
@@ -31,9 +29,7 @@ This project is based on the [Vagrant Project](http://drupal.org/project/vagrant
 
 --------
 
-You can add `XDEBUG_PROFILE` to your GET parameter to generate an xdebug profile, e.g. [http://dev-site.vbox.local/?XDEBUG_PROFILE](http://dev-site.vbox.local/?XDEBUG_PROFILE)
-
-You can then investigate at [http://dev-site.local/webgrind/](http://dev-site.local/webgrind/)
+You can add `XDEBUG_PROFILE` to your GET parameter to generate an xdebug profile, e.g. [http://online.elmsln/?XDEBUG_PROFILE](http://dev-site.vbox.local/?XDEBUG_PROFILE)
 
 
 ## Other projects of interest
