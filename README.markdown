@@ -10,10 +10,15 @@ VirtualBox Vagrant Chef Drupal ELMSLN install
 4. Add this line to your /etc/hosts (or windows equivalent):
 `
 10.0.0.10       courses.elmsln
+
 10.0.0.11       media.elmsln
+
 10.0.0.12       online.elmsln
+
 10.0.0.13       analytics.elmsln
+
 10.0.0.14       studio.elmsln
+
 10.0.0.15       interact.elmsln
 `
 
