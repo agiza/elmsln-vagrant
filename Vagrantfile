@@ -43,8 +43,8 @@ Vagrant::Config.run do |config|
 
     chef.roles_path = "roles"
 
-    # This role represents our default Drupal development stack.
-    chef.add_role("drupal_lamp_dev")
+    # This role represents our default ELMSLN development stack.
+    chef.add_role("elmsln_dev")
 
     chef.json.merge!({
         :www_root => '/vagrant/public',
