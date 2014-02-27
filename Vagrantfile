@@ -63,7 +63,7 @@ Vagrant::Config.run do |config|
   $script = "bash scripts/install/elmsln-install.sh"
   config.vm.provision "shell", inline: $script
   config.vm.provision "shell",
-    inline: "You should have a shiny new elmsln instance.. maybe"
+    inline: "Welcome to the Singularity of edtech."
 end
 
 # Returns true if we are running on a MS windows platform, false otherwise.
