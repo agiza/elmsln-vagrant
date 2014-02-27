@@ -1,4 +1,4 @@
-<VirtualHost *:<%= @params[:port] %>>
+<VirtualHost <%= @params[:server_name] %>:<%= @params[:port] %>>
   ServerName <%= @params[:server_name] %>
   ServerAlias <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
   DocumentRoot <%= @params[:docroot] %>
@@ -9,6 +9,7 @@
     AllowOverride All
     Order allow,deny
     Allow from all
+    Include <%= @params[:docroot] %>/.htaccess
   </Directory>
 
   <Directory />

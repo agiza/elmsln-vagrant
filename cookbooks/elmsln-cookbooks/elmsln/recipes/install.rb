@@ -9,8 +9,8 @@ case node[:platform]
 when "debian", "ubuntu"
   bash "install-elmsln-script" do
     code <<-EOH
-    (/var/www/elmsln/scripts/install/elmsln-install.sh)
+    (bash /var/www/elmsln/scripts/install/elmsln-install.sh)
     EOH
-    not_if { File.exists?("/var/www/elmsln/scripts/install/elmsln-install.sh") }
+    only_if { File.exists?("/var/www/elmsln/scripts/install/elmsln-install.sh") }
   end
 end

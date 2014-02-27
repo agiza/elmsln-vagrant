@@ -17,7 +17,8 @@ when "debian", "ubuntu"
     code <<-EOH
     (ln -s /var/www/elmsln /home/vagrant/elmsln)
     EOH
-    not_if { File.exists?("/var/www/elmsln") }
+    not_if { File.exists?("/home/vagrant/elmsln") }
+    only_if { File.exists?("/var/www/elmsln") }
   end
   # hook up the drush-create-site job processor
   bash "make-drush-create-site-symlink" do
