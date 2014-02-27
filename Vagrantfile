@@ -21,6 +21,11 @@ Vagrant::Config.run do |config|
 
   # Network setting for Vagrant >= 0.90
   config.vm.network :hostonly, "10.0.0.10"
+  config.vm.network :hostonly, "10.0.0.11"
+  config.vm.network :hostonly, "10.0.0.12"
+  config.vm.network :hostonly, "10.0.0.13"
+  config.vm.network :hostonly, "10.0.0.14"
+  config.vm.network :hostonly, "10.0.0.15"
   config.vm.forward_port(80, 80)
   config.vm.forward_port(3306, 3306)
 

@@ -1,5 +1,5 @@
 # What
-VirtualBox Vagrant Chef Drupal install
+VirtualBox Vagrant Chef Drupal ELMSLN install
 
 
 # How
@@ -9,16 +9,18 @@ VirtualBox Vagrant Chef Drupal install
     `cd [vagrant project directory];
     vagrant up`
 4. Add this line to your /etc/hosts (or windows equivalent):
-    `10.0.0.10        dev-site.local`
-5. Alternately, use homebrew on your macbook air to install dnsmasq, and add the following line to your dnsmasq.conf file:
-    `address=/.vm/10.0.0.10`
-6. Drink a big kombucha while you listen to a Diamond Rings EP on vinyl, because clearly you're a giant hipster.
+10.0.0.10       courses.elmsln
+10.0.0.11       media.elmsln
+10.0.0.12       online.elmsln
+10.0.0.13       analytics.elmsln
+10.0.0.14       studio.elmsln
+10.0.0.15       interact.elmsln
 
 
 That's it, files in "public" are served here : [http://dev-site.local/](http://dev-site.local/), and if you have a new MySQL database and drop a copy of Drupal into the public directory, you'll be ready to go.
 
 To connect to the console of you instance:
-    `vagrant ssh` 
+    `vagrant ssh`
 
 # Why
 This project is based on the [Vagrant Project](http://drupal.org/project/vagrant) on Drupal.org, but includes a number of tweaks.
