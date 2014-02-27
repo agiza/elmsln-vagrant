@@ -49,7 +49,7 @@ Vagrant::Config.run do |config|
     chef.json.merge!({
         :www_root => '/vagrant/public',
         :mysql => {
-          :server_root_password => "986107L4R3a2T5uicsOy", # TODO Hardcoded MySQL root password.
+          :server_root_password => "986107L4R3a2T5uicsOy",
           :allow_remote_root => true,
           :bind_address => "0.0.0.0"
         },
