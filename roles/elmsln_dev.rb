@@ -9,5 +9,4 @@ run_list(
   "recipe[drupal::multisite]",
   "recipe[elmsln::default]",
   "recipe[elmsln-config-vagrant]",
-  "recipe[elmsln::install]"
 )

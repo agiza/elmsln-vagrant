@@ -63,6 +63,8 @@ Vagrant::Config.run do |config|
       })
   end
   config.vm.provision "shell",
+    inline: "bash /var/www/elmsln/scripts/install/elmsln-install.sh"
+  config.vm.provision "shell",
     inline: "Welcome to the Singularity of edtech."
 end
 
