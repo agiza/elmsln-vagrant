@@ -18,11 +18,11 @@
 case node[:platform]
 when "debian", "ubuntu"
   git "/usr/share/drush" do
-    repository "http://git.drupal.org/project/drush.git"
-    reference "8.x-6.x"
+    repository "git://github.com/drush-ops/drush.git"
+    reference "6.x"
     action :sync
   end
-  
+
   bash "make-drush-symlink" do
     code <<-EOH
     (ln -s /usr/share/drush/drush /usr/bin/drush)
