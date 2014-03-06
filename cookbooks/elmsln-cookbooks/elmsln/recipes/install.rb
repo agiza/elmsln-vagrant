@@ -12,5 +12,6 @@ when "debian", "ubuntu"
     (bash /var/www/elmsln/scripts/install/elmsln-install.sh)
     EOH
     only_if { File.exists?("/var/www/elmsln/scripts/install/elmsln-install.sh") }
+    not_if { File.exists?("/var/www/elmsln/config/stacks/online/sites/online/vu/files") }
   end
 end

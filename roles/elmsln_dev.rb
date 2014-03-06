@@ -7,7 +7,5 @@ run_list(
   "role[memcached]",
   "role[mysql_server]",
   "recipe[drupal::multisite]",
-  "recipe[elmsln::default]",
-  "recipe[elmsln-config-vagrant]",
-  "recipe[elmsln::install]"
+  "role[elmsln_vagrant]"
 )

@@ -62,8 +62,11 @@ Vagrant::Config.run do |config|
         }
       })
   end
-  #config.vm.provision "shell",
-  #  inline: "bash /var/www/elmsln/scripts/install/elmsln-install.sh"
+  # comment in if you want to force install after initial installation
+  config.vm.provision "shell",
+    inline: "bash /var/www/elmsln/scripts/install/elmsln-install.sh"
+  config.vm.provision "shell",
+    inline: "echo 'finished! go to http://online.elmsln and login with username admin and password admin'"
 end
 
 # Returns true if we are running on a MS windows platform, false otherwise.
