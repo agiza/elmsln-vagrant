@@ -18,6 +18,17 @@ when "debian", "ubuntu"
     owner "www-data"
     group "www-data"
   end
+  # installer should do this but just to be safe
+  directory "/var/www/elmsln/core/dslmcode/stacks/online/sites/online/services/vu/files" do
+    mode 0755
+    owner "www-data"
+    group "www-data"
+  end
+  directory "/var/www/elmsln/core/dslmcode/stacks/online/sites/online/vu/files" do
+    mode 0755
+    owner "www-data"
+    group "www-data"
+  end
   # hook up crontab
   bash "hook-up-crontab" do
     code <<-EOH
