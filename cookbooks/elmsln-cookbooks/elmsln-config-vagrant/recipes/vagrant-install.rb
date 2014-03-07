@@ -7,10 +7,10 @@
 
 case node[:platform]
 when "debian", "ubuntu"
-  # apply correct directory permissions
-  directory "/var/www/elmsln/config/stacks/online/sites/online/vu/files" do
-      mode 0777
-      owner "root"
-      group "root"
-    end
+  # apply correct directory permissions for online site
+  directory "/var/www/elmsln/config/private_files" do
+    mode 0755
+    owner "www-data"
+    group "www-data"
+  end
 end
