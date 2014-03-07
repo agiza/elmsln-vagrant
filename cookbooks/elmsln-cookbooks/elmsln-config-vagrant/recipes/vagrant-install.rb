@@ -23,11 +23,13 @@ when "debian", "ubuntu"
     mode 0755
     owner "www-data"
     group "www-data"
+    recursive true
   end
   directory "/var/www/elmsln/core/dslmcode/stacks/online/sites/online/vu/files" do
     mode 0755
     owner "www-data"
     group "www-data"
+    recursive true
   end
   # hook up crontab
   bash "hook-up-crontab" do
