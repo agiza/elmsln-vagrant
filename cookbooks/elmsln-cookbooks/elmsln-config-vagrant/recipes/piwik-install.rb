@@ -3,41 +3,39 @@
 # Recipe:: piwik-install
 #
 # Licensed under the GPL, Version 2.0
-#
 
 case node[:platform]
 when "debian", "ubuntu"
+  # apply correct directory permissions for online site
+  directory "/var/www/elmsln/config/_nondrupal/piwik" do
+    mode 0755
+    owner "www-data"
+    group "www-data"
+    recursive true
+  end
+  # apply correct directory permissions for online site
+  directory "/var/www/elmsln/config/_nondrupal/piwik/tmp" do
+    mode 0755
+    owner "www-data"
+    group "www-data"
+    action :create
+  end
   # apply correct directory permissions for online site
   directory "/var/www/elmsln/core/_nondrupal/piwik" do
     mode 0755
     owner "www-data"
     group "www-data"
-  end
-  # apply correct directory permissions for online site
-  directory "/var/www/elmsln/core/_nondrupal/piwik/tmp/" do
-    mode 0755
-    owner "www-data"
-    group "www-data"
-    action :create
     recursive true
   end
-  #run mysql commands to import the default state
-  mysql_connection_info = {
-    :host => "localhost",
-    :username => "root",
-    :password => node['mysql']['server_root_password']
-  }
-
-  # drop if exists, then create a mysql database named DB_NAME
-  mysql_database "analytics_vu" do
-    connection mysql_connection_info
-    action [:drop, :create]
+  # create database
+  bash "create-piwik-db" do
+    code <<-EOH
+    (mysqladmin -u root -p"#{node['mysql']['server_root_password']}" create analytics_vu)
+    EOH
   end
-
-  # import from a dump file directly after installation
-  mysql_database "analytics_vu" do
-    connection mysql_connection_info
-    sql "source /vagrant/cookbooks/elmsln-cookbooks/elmsln-config-vagrant
-/files/vagrant-piwik-default.sql;"
+  # import an sql dump
+  execute "import" do
+    command "mysql -u root -p\"#{node['mysql']['server_root_password']}\" analytics_vu < /tmp/vagrant-chef-1/chef-solo-3/cookbooks/elmsln-config-vagrant/files/vagrant-piwik-default.sql"
+    action :run
   end
 end
