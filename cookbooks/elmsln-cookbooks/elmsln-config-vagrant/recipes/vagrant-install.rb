@@ -40,7 +40,7 @@ when "debian", "ubuntu"
     EOH
   end
   # shortcut for drush-remove-site script
-  bash "drush-create-site-sym" do
+  bash "drush-remove-site-sym" do
     code <<-EOH
     printf "alias drs='/usr/local/bin/drush-create-site/rm-site.sh'" >> /home/vagrant/.bashrc
     EOH
