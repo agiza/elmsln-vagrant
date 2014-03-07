@@ -18,4 +18,10 @@ when "debian", "ubuntu"
     (cp -R /var/www/elmsln/config/scripts/drush/server/* /home/vagrant/.drush/)
     EOH
   end
+  # wipe current config directory
+  bash "drush-cc-drush" do
+    code <<-EOH
+    (drush cc drush)
+    EOH
+  end
 end
