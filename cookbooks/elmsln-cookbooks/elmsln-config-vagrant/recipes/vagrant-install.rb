@@ -18,4 +18,31 @@ when "debian", "ubuntu"
     owner "www-data"
     group "www-data"
   end
+  # hook up crontab
+  bash "hook-up-crontab" do
+    code <<-EOH
+    (
+      printf "\n\n#ELMSLN cron.php calls, at least 1 per stack\n" >> /etc/crontab
+      printf "02 05 * * * root /usr/bin/php /var/www/elmsln/core/dslmcode/stacks/courses/sites/cron.php\n" >> /etc/crontab
+      printf "02 10 * * * root /usr/bin/php /var/www/elmsln/core/dslmcode/stacks/media/sites/cron.php\n" >> /etc/crontab
+      printf "02 15 * * * root /usr/bin/php /var/www/elmsln/core/dslmcode/stacks/online/sites/cron.php\n" >> /etc/crontab
+      printf "#ELMSLN drush-create-site activation for site request processing\n" >> /etc/crontab
+      printf "* * * * * root  /usr/local/bin/drush-create-site/drush-create-site >> /var/log/drush.log\n" >> /etc/crontab
+      printf "#ELMSLN flush pac caches nightly to prevent overfragmentation\n" >> /etc/crontab
+      printf "00 05 * * * root /etc/init.d/httpd reload\n" >> /etc/crontab
+    )
+    EOH
+  end
+  # symlink drush create site scripts into scope of bin
+  bash "drush-create-site-sym" do
+    code <<-EOH
+    (ln -s /var/www/elmsln/scripts/drush-create-site /usr/local/bin/drush-create-site)
+    EOH
+  end
+  # shortcut for drush-remove-site script
+  bash "drush-create-site-sym" do
+    code <<-EOH
+    printf "alias drs='/usr/local/bin/drush-create-site/rm-site.sh'" >> /home/vagrant/.bashrc
+    EOH
+  end
 end
