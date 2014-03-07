@@ -37,7 +37,7 @@ when "debian", "ubuntu"
   # import from a dump file directly after installation
   mysql_database "analytics_vu" do
     connection mysql_connection_info
-    sql "source /tmp/vagrant-chef-1/chef-solo-3/cookbooks/elmsln-config-v
-agrant/files/vagrant-piwik-default.sql;"
+    sql "source /vagrant/cookbooks/elmsln-cookbooks/elmsln-config-vagrant
+/files/vagrant-piwik-default.sql;"
   end
 end

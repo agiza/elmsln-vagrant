@@ -13,4 +13,9 @@ when "debian", "ubuntu"
     owner "www-data"
     group "www-data"
   end
+  directory "/var/www/elmsln/config/jobs" do
+    mode 0755
+    owner "www-data"
+    group "www-data"
+  end
 end
