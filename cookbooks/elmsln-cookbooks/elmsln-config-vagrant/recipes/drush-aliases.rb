@@ -15,7 +15,7 @@ when "debian", "ubuntu"
   end
   bash "cp-elmsln-drush-defaults" do
     code <<-EOH
-    (cp /var/www/elmsln/config/scripts/drush/server /home/vagrant/.drush)
+    (cp -R /var/www/elmsln/config/scripts/drush/server/* /home/vagrant/.drush/)
     EOH
   end
 end

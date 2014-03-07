@@ -4,6 +4,6 @@ run_list(
   "recipe[elmsln::default]",
   "recipe[elmsln-config-vagrant::default]",
   "recipe[elmsln-config-vagrant::drush-aliases]",
-  #"recipe[elmsln::install]",
+  "recipe[elmsln::install]",
   "recipe[elmsln-config-vagrant::vagrant-install]"
 )
