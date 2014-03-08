@@ -36,8 +36,7 @@ Now you'll be able to jump into any of the domains that ELMSLN starts to establi
 
 You can log into this with `user: admin | password: admin`
 
-To connect to the console of you instance:
-    `vagrant ssh`
+To connect to the console of you instance: `vagrant ssh`
 
 # Why use this
 This project is based on the [Vagrant Project](http://drupal.org/project/vagrant) on Drupal.org, but includes a number of tweaks.  It has been optimized and heavily tested for use with ELMS Learning Network.  It's what [@btopro](http://twitter.com/btopro) uses in daily testing and development and the drop dead easiest way to get up and running with such a complex system.
