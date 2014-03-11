@@ -9,10 +9,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # and listing of configuration options, please view the documentation
   # online.
 
+  # This is the base box this image was originally produced from for documentation
+  # purposes. If you want to use the base-box or modify it see Vagrantfile-baseSystem
+  #config.vm.box = "precise64"
+  #config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "precise64"
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-
+  # This is the official ELMSLN.box VM that lives in vagrantcloud
+  config.vm.box = "btopro/elmsln"
   # private network port maping, host files point to elmsln domains
   config.vm.network "private_network", ip: "10.0.0.10"
   config.vm.network "private_network", ip: "10.0.0.11"
@@ -20,48 +23,38 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "10.0.0.13"
   config.vm.network "private_network", ip: "10.0.0.14"
   config.vm.network "private_network", ip: "10.0.0.15"
-
+  # forward the vm ports for database and apache to local ones
   config.vm.network "forwarded_port", guest: 80, host: 80
   config.vm.network "forwarded_port", guest: 3306, host: 3306
 
   # Try to use NFS only on platforms other than Windows
   nfs = !Kernel.is_windows?
   config.vm.synced_folder ".", "/vagrant", type: "nfs"
-
+  # custom modifications based on running a base-box built on virtualbox
   config.vm.provider "virtualbox" do |v|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.memory = 512
     v.cpus = 1
   end
-
+  # chef commands to run git checkout commands to latest branch for both repos
   config.vm.provision "chef_solo" do |chef|
     # This path will be expanded relative to the project directory
-    chef.cookbooks_path = ["cookbooks/site-cookbooks", "cookbooks/drupal-cookbooks", "cookbooks/elmsln-cookbooks"]
+    chef.cookbooks_path = ["cookbooks/elmsln-cookbooks"]
 
-    chef.add_recipe("vim")
+    #chef.add_recipe("vim")
 
     chef.roles_path = "roles"
 
-    # This role represents our default ELMSLN development stack.
-    chef.add_role("elmsln_dev")
-
-    chef.json.merge!({
-      :www_root => '/var/www/elmsln/domains',
-      :mysql => {
-        :server_root_password => "986107L4R3a2T5uicsOy",
-        :allow_remote_root => true,
-        :bind_address => "0.0.0.0"
-      },
-      :hosts => {
-        :localhost_aliases => ["online", "courses", "studio", "interact", "analytics", "media"]
-      },
-      :drush => {
-        :install_method => 'pear',
-        :version => '6.2.0'
-      }
-    })
+    # This role represents our ELMSLN sub-box command stack. This assumes the
+    # heavy lifting has all been done in a standard way in our elmsln.box VM
+    # that was downloaded. The VM will be versioned periodically when changes
+    # are required for the base-build but thus far git checkouts overtop of
+    # the elmsln and elmsln-config-vagrant repos are all that's needed to work.
+    chef.add_role("elmsln_subbox")
   end
   # comment in if you want to force install after initial installation / provision
+  # only reason to do this is experimentation after successfully destroying what
+  # the install script provides. It isn't recommended.
   #config.vm.provision "shell",
   #  inline: "bash /var/www/elmsln/scripts/install/elmsln-install.sh"
   config.vm.provision "shell",
