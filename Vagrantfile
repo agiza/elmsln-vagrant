@@ -30,8 +30,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider "virtualbox" do |v|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    v.memory = 1024
-    v.cpus = 2
+    v.memory = 512
+    v.cpus = 1
   end
 
   config.vm.provision "chef_solo" do |chef|
