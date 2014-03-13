@@ -55,10 +55,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # the elmsln and elmsln-config-vagrant repos are all that's needed to work.
     chef.add_role("elmsln_subbox")
   end
-
-  # Try to use NFS only on platforms other than Windows
-  nfs = !Kernel.is_windows?
-  config.vm.synced_folder ".", "/vagrant", type: "nfs"
+  # share vargrant config w/ the server, this is only mildly useful though
+  config.vm.synced_folder ".", "/vagrant"
 
   # all done! tell them how to login
   config.vm.provision "shell",
