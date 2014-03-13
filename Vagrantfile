@@ -27,15 +27,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 80, host: 80
   config.vm.network "forwarded_port", guest: 3306, host: 3306
 
-  # Try to use NFS only on platforms other than Windows
-  nfs = !Kernel.is_windows?
-  config.vm.synced_folder ".", "/vagrant", type: "nfs"
   # custom modifications based on running a base-box built on virtualbox
   config.vm.provider "virtualbox" do |v|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.memory = 512
     v.cpus = 1
   end
+
+  # Try to use NFS only on platforms other than Windows
+  nfs = !Kernel.is_windows?
+  # default vagrant config for synced folder
+  #config.vm.synced_folder ".", "/vagrant", type: "nfs"
+  # this creates a codedev folder in the vagrant directory that is mapped
+  # directly to the /var/www/elmsln folder to improve development workflows
+  config.vm.synced_folder "./_elmslndev", "/var/www"
+
   # chef commands to run git checkout commands to latest branch for both repos
   config.vm.provision "chef_solo" do |chef|
     # This path will be expanded relative to the project directory
@@ -52,6 +58,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # the elmsln and elmsln-config-vagrant repos are all that's needed to work.
     chef.add_role("elmsln_subbox")
   end
+
   # comment in if you want to force install after initial installation / provision
   # only reason to do this is experimentation after successfully destroying what
   # the install script provides. It isn't recommended.
