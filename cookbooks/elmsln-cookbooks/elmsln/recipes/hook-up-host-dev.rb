@@ -12,7 +12,7 @@ when "debian", "ubuntu"
     code <<-EOH
     (
       mv /var/www/elmsln/* /_elmslndev
-      rmdir /var/www/elmsln
+      rm -rf /var/www/elmsln
       ln -s /_elmslndev/ /var/www/elmsln
     )
     EOH
