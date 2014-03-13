@@ -3,9 +3,9 @@ description "Do git checkouts for latest versions of code, this is for use with 
 run_list(
   "recipe[elmsln::repo]",
   "recipe[elmsln-config-vagrant::default]",
+  "recipe[elmsln-config-vagrant::vagrant-chown]",
   "recipe[elmsln-config-vagrant::drush-aliases]",
   "recipe[elmsln::install]",
-  #"recipe[elmsln::hook-up-host-dev]",
   "recipe[elmsln-config-vagrant::piwik-directories]",
   "recipe[elmsln-config-vagrant::vagrant-install]"
 )
