@@ -43,7 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.roles_path = "roles"
 
     # This role represents our default ELMSLN development stack.
-    chef.add_role("elmsln_dev")
+    chef.add_role("elmsln_basebox")
 
     chef.json.merge!({
       :www_root => '/var/www/elmsln/domains',
@@ -64,8 +64,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # comment in if you want to force install after initial installation / provision
   #config.vm.provision "shell",
   #  inline: "bash /var/www/elmsln/scripts/install/elmsln-install.sh"
-  config.vm.provision "shell",
-    inline: "echo 'finished! go to http://online.elmsln and login with username admin and password admin'"
+  # comment in if you want to install right after base system is built
+  #config.vm.provision "shell",
+  #  inline: "echo 'finished! go to http://online.elmsln and login with username admin and password admin'"
 end
 
 # Returns true if we are running on a MS windows platform, false otherwise.
