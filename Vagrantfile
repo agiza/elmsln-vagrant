@@ -32,11 +32,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # custom modifications based on running a base-box built on virtualbox
   config.vm.provider "virtualbox" do |v|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    v.memory = 512
-    v.cpus = 1
-    # beafed up starting point
-    #v.memory = 1024
-    #v.cpus = 2
+    #v.memory = 512
+    #v.cpus = 1
+    # beefed up starting point
+    v.memory = 1024
+    v.cpus = 2
   end
 
   # chef commands to set up everything
@@ -57,13 +57,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Try to use NFS only on platforms other than Windows
-  # this creates a codedev folder in the vagrant directory that is mapped
-  # directly to the /var/www/elmsln folder to improve development workflows
-  config.vm.synced_folder "./_elmslndev", "/_elmslndev"
+  nfs = !Kernel.is_windows?
+  config.vm.synced_folder ".", "/vagrant", type: "nfs"
 
   # all done! tell them how to login
   config.vm.provision "shell",
-    inline: "echo 'finished! go to http://online.elmsln and login with username admin and password admin'"
+    inline: "echo 'finished! go to http://online.elmsln and login with username admin and password admin. to edit files on the box point an sftp client to /var/www/elmsln on 0.0.0.0 u/p vagrant/vagrant port 2222.'"
 end
 
 # Returns true if we are running on a MS windows platform, false otherwise.
