@@ -13,7 +13,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # purposes. If you want to use the base-box or modify it see Vagrantfile-baseSystem
   #config.vm.box = "precise64"
   #config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-  # Every Vagrant virtual environment requires a box to build off of.
+  # This is useful if packaging from the base-routine and wanting to use a local box
+  #config.vm.box = "elmsln"
+  #config.vm.box_url="elmsln.box"
+
   # This is the official ELMSLN.box VM that lives in vagrantcloud
   config.vm.box = "btopro/elmsln"
   # private network port maping, host files point to elmsln domains
