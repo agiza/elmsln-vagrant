@@ -18,18 +18,16 @@ when "debian", "ubuntu"
     owner "www-data"
     group "www-data"
   end
-  # installer should do this but just to be safe
-  directory "/var/www/elmsln/core/dslmcode/stacks/online/sites/online/services/vu/files" do
-    mode 0755
-    owner "www-data"
-    group "www-data"
-    recursive true
-  end
-  directory "/var/www/elmsln/core/dslmcode/stacks/online/sites/online/vu/files" do
-    mode 0755
-    owner "www-data"
-    group "www-data"
-    recursive true
+  bash "set-online-dir-perms" do
+    code <<-EOH
+    (
+      chmod -R 755 /var/www/elmsln/core/dslmcode/stacks/online/sites/online/vu/files
+      chown -R www-data:www-data /var/www/elmsln/core/dslmcode/stacks/online/sites/online/vu/files
+      chmod -R 755 /var/www/elmsln/core/dslmcode/stacks/online/sites/online/services/vu/files
+      chown -R www-data:www-data /var/www/elmsln/core/dslmcode/stacks/online/sites/online/services/vu/files
+    )
+    EOH
+    only_if { File.exists?("/var/www/elmsln/core/dslmcode/stacks/online/sites/online/vu/files") }
   end
   # hook up crontab
   bash "hook-up-crontab" do

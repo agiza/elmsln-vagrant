@@ -19,5 +19,15 @@ when "debian", "ubuntu"
     repository "git://github.com/btopro/elmsln-config-vagrant.git"
     reference "master"
     action :sync
+    not_if { File.exists?("/var/www/elmsln/config/scripts/drush-create-site/config.cfg") }
+  end
+  # resync code from the repo just incase above has already been run
+  bash "checkout-latest-changes" do
+    code <<-EOH
+    (
+      cd /var/www/elmsln/config
+      git pull origin master
+    )
+    EOH
   end
 end

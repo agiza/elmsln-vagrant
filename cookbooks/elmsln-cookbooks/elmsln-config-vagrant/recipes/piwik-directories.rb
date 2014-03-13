@@ -10,9 +10,9 @@ when "debian", "ubuntu"
     code <<-EOH
     (mkdir /var/www/elmsln/config/_nondrupal/piwik/tmp
     chmod -R 755 /var/www/elmsln/config/_nondrupal/piwik
-    chown -R /var/www/elmsln/config/_nondrupal/piwik
+    chown -R www-data:www-data /var/www/elmsln/config/_nondrupal/piwik
     chmod -R 755 /var/www/elmsln/core/_nondrupal/piwik
-    chown -R /var/www/elmsln/core/_nondrupal/piwik)
+    chown -R www-data:www-data /var/www/elmsln/core/_nondrupal/piwik)
     EOH
     not_if { File.exists?("/var/www/elmsln/config/_nondrupal/piwik/tmp") }
     only_if { File.exists?("/var/www/elmsln/config/_nondrupal") }
