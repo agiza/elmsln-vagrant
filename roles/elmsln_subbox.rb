@@ -4,7 +4,8 @@ run_list(
   "recipe[elmsln::repo]",
   "recipe[elmsln-config-vagrant::default]",
   "recipe[elmsln-config-vagrant::drush-aliases]",
-  "recipe[elmsln-config-vagrant::piwik-directories]",
   "recipe[elmsln::install]",
-  "recipe[elmsln-config-vagrant::vagrant-install]"
+  "recipe[elmsln-config-vagrant::piwik-directories]",
+  "recipe[elmsln-config-vagrant::vagrant-install]",
+  "recipe[elmsln::hook-up-host-dev]"
 )

@@ -6,25 +6,15 @@
 
 case node[:platform]
 when "debian", "ubuntu"
-  # apply correct directory permissions for online site
-  directory "/var/www/elmsln/config/_nondrupal/piwik" do
-    mode 0755
-    owner "www-data"
-    group "www-data"
-    recursive true
-  end
-  # apply correct directory permissions for online site
-  directory "/var/www/elmsln/config/_nondrupal/piwik/tmp" do
-    mode 0755
-    owner "www-data"
-    group "www-data"
-    action :create
-  end
-  # apply correct directory permissions for online site
-  directory "/var/www/elmsln/core/_nondrupal/piwik" do
-    mode 0755
-    owner "www-data"
-    group "www-data"
-    recursive true
+  bash "set-piwik-perms" do
+    code <<-EOH
+    (mkdir /var/www/elmsln/config/_nondrupal/piwik/tmp
+    chmod -R 755 /var/www/elmsln/config/_nondrupal/piwik
+    chown -R /var/www/elmsln/config/_nondrupal/piwik
+    chmod -R 755 /var/www/elmsln/core/_nondrupal/piwik
+    chown -R /var/www/elmsln/core/_nondrupal/piwik)
+    EOH
+    not_if { File.exists?("/var/www/elmsln/config/_nondrupal/piwik/tmp") }
+    only_if { File.exists?("/var/www/elmsln/config/_nondrupal") }
   end
 end

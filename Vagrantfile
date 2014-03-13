@@ -5,9 +5,6 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # All Vagrant configuration is done here. For a detailed explanation
-  # and listing of configuration options, please view the documentation
-  # online.
 
   # This is the base box this image was originally produced from for documentation
   # purposes. If you want to use the base-box or modify it see Vagrantfile-baseSystem
@@ -19,6 +16,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # This is the official ELMSLN.box VM that lives in vagrantcloud
   config.vm.box = "btopro/elmsln"
+
+
   # private network port maping, host files point to elmsln domains
   config.vm.network "private_network", ip: "10.0.0.10"
   config.vm.network "private_network", ip: "10.0.0.11"
@@ -35,17 +34,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.memory = 512
     v.cpus = 1
+    # beafed up starting point
+    #v.memory = 1024
+    #v.cpus = 2
   end
 
-  # Try to use NFS only on platforms other than Windows
-  nfs = !Kernel.is_windows?
-  # default vagrant config for synced folder
-  #config.vm.synced_folder ".", "/vagrant", type: "nfs"
-  # this creates a codedev folder in the vagrant directory that is mapped
-  # directly to the /var/www/elmsln folder to improve development workflows
-  config.vm.synced_folder "./_elmslndev", "/var/www"
-
-  # chef commands to run git checkout commands to latest branch for both repos
+  # chef commands to set up everything
   config.vm.provision "chef_solo" do |chef|
     # This path will be expanded relative to the project directory
     chef.cookbooks_path = ["cookbooks/elmsln-cookbooks"]
@@ -62,11 +56,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_role("elmsln_subbox")
   end
 
-  # comment in if you want to force install after initial installation / provision
-  # only reason to do this is experimentation after successfully destroying what
-  # the install script provides. It isn't recommended.
-  #config.vm.provision "shell",
-  #  inline: "bash /var/www/elmsln/scripts/install/elmsln-install.sh"
+  # Try to use NFS only on platforms other than Windows
+  # this creates a codedev folder in the vagrant directory that is mapped
+  # directly to the /var/www/elmsln folder to improve development workflows
+  config.vm.synced_folder "./_elmslndev", "/_elmslndev"
+
+  # all done! tell them how to login
   config.vm.provision "shell",
     inline: "echo 'finished! go to http://online.elmsln and login with username admin and password admin'"
 end
