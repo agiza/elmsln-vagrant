@@ -63,7 +63,7 @@ when "debian", "ubuntu"
   bash "drush-vagrant-bakery" do
     code <<-EOH
     cd /var/www/elmsln/domains/online
-    drush en vagrant_bakery --uri=online.elmsln.local
+    drush en vagrant_bakery --uri=online.elmsln.local --y
     EOH
   end
 end
