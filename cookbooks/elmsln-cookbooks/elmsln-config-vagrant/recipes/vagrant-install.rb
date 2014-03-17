@@ -60,10 +60,10 @@ when "debian", "ubuntu"
     EOH
   end
   # enable drush function for bakery and piwik integration OOTB
-  #bash "drush-vagrant-modules" do
-  #  code <<-EOH
-  #  cd /var/www/elmsln/domains/online
-  #  drush en vagrant_elmsln_defaults --uri=online.elmsln.local
-  #  EOH
-  #end
+  bash "drush-vagrant-bakery" do
+    code <<-EOH
+    cd /var/www/elmsln/domains/online
+    drush en vagrant_bakery --uri=online.elmsln.local
+    EOH
+  end
 end
