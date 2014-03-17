@@ -34,11 +34,11 @@ vagrant up
 10.0.0.15       data.interact.elmsln.local
 ```
 
-Now you'll be able to jump into any of the domains that ELMSLN starts to establish for use!  Go to http://online.elmsln.local/ after installation completes (grab a coffee, it takes awhile the first time).  IF it all worked you should see a new Drupal site running the Course Information System (CIS) distribution.
+Now you'll be able to jump into any of the domains that ELMSLN starts to establish for use!  Go to http://online.elmsln.local/ after installation completes (grab a coffee, it takes awhile the first time to finish).  If it all worked you should see a new Drupal site running the Course Information System (CIS) distribution.
 
 You can log into this with `user: admin | password: admin`
 
-To connect to the console of you instance: `vagrant ssh`
+To connect to the console of your instance: `vagrant ssh`
 
 ###Why use this
 
