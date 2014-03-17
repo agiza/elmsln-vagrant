@@ -66,7 +66,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #  inline: "bash /var/www/elmsln/scripts/install/elmsln-install.sh"
   # comment in if you want to install right after base system is built
   #config.vm.provision "shell",
-  #  inline: "echo 'finished! go to http://online.elmsln and login with username admin and password admin'"
+  #  inline: "echo 'finished! go to http://online.elmsln.local/ and login with username admin and password admin'"
 end
 
 # Returns true if we are running on a MS windows platform, false otherwise.

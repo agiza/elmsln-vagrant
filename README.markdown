@@ -19,22 +19,22 @@ vagrant up
 ###ELMSLN development
 
 # front facing addresses
-10.0.0.10       courses.elmsln
-10.0.0.11       media.elmsln
-10.0.0.12       online.elmsln
-10.0.0.13       analytics.elmsln
-10.0.0.14       studio.elmsln
-10.0.0.15       interact.elmsln
+10.0.0.10       courses.elmsln.local
+10.0.0.11       media.elmsln.local
+10.0.0.12       online.elmsln.local
+10.0.0.13       analytics.elmsln.local
+10.0.0.14       studio.elmsln.local
+10.0.0.15       interact.elmsln.local
 
 # backend webservices addresses
-10.0.0.10       data.courses.elmsln
-10.0.0.11       data.media.elmsln
-10.0.0.12       data.online.elmsln
-10.0.0.14       data.studio.elmsln
-10.0.0.15       data.interact.elmsln
+10.0.0.10       data.courses.elmsln.local
+10.0.0.11       data.media.elmsln.local
+10.0.0.12       data.online.elmsln.local
+10.0.0.14       data.studio.elmsln.local
+10.0.0.15       data.interact.elmsln.local
 ```
 
-Now you'll be able to jump into any of the domains that ELMSLN starts to establish for use!  Go to http://online.elmsln/ after installation completes (grab a coffee, it takes awhile the first time).  IF it all worked you should see a new Drupal site running the Course Information System (CIS) distribution.
+Now you'll be able to jump into any of the domains that ELMSLN starts to establish for use!  Go to http://online.elmsln.local/ after installation completes (grab a coffee, it takes awhile the first time).  IF it all worked you should see a new Drupal site running the Course Information System (CIS) distribution.
 
 You can log into this with `user: admin | password: admin`
 

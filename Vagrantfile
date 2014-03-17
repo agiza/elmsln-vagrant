@@ -60,7 +60,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # all done! tell them how to login
   config.vm.provision "shell",
-    inline: "echo 'finished! go to http://online.elmsln and login with username admin and password admin. to edit files on the box point an sftp client to /var/www/elmsln on 0.0.0.0 u/p vagrant/vagrant port 2222.'"
+    inline: "echo 'finished! go to http://online.elmsln.local and login with username admin and password admin. to edit files on the box point an sftp client to /var/www/elmsln on 0.0.0.0 u/p vagrant/vagrant port 2222.'"
 end
 
 # Returns true if we are running on a MS windows platform, false otherwise.
