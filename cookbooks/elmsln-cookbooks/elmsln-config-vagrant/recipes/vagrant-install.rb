@@ -54,6 +54,16 @@ when "debian", "ubuntu"
   bash "drush-remove-site-sym" do
     code <<-EOH
     printf "alias drs='/usr/local/bin/drush-create-site/rm-site.sh'" >> /home/vagrant/.bashrc
+    printf "alias d='drush'" >> /home/vagrant/.bashrc
+    printf "alias g='git'" >> /home/vagrant/.bashrc
+    printf "alias l='ls -lah'" >> /home/vagrant/.bashrc
     EOH
   end
+  # enable drush function for bakery and piwik integration OOTB
+  #bash "drush-vagrant-modules" do
+  #  code <<-EOH
+  #  cd /var/www/elmsln/domains/online
+  #  drush en vagrant_elmsln_defaults --uri=online.elmsln.local
+  #  EOH
+  #end
 end
