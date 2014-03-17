@@ -53,10 +53,10 @@ when "debian", "ubuntu"
   # shortcut for drush-remove-site script
   bash "drush-remove-site-sym" do
     code <<-EOH
-    printf "alias drs='/usr/local/bin/drush-create-site/rm-site.sh'" >> /home/vagrant/.bashrc
-    printf "alias d='drush'" >> /home/vagrant/.bashrc
-    printf "alias g='git'" >> /home/vagrant/.bashrc
-    printf "alias l='ls -lah'" >> /home/vagrant/.bashrc
+    printf "\n\nalias drs='/usr/local/bin/drush-create-site/rm-site.sh'\n" >> /home/vagrant/.bashrc
+    printf "alias d='drush'\n" >> /home/vagrant/.bashrc
+    printf "alias g='git'\n" >> /home/vagrant/.bashrc
+    printf "alias l='ls -lah'\n\n" >> /home/vagrant/.bashrc
     EOH
   end
   # enable drush function for bakery and piwik integration OOTB
