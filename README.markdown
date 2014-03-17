@@ -13,7 +13,7 @@ This is a Vagrant profile for installing a fully functioning ELMS Learning Netwo
 cd elmsln-vagrant
 vagrant up
 ```
-6. Add this line to your /etc/hosts (or windows equivalent) so you can access it "over the web":
+6. Add this line to your /etc/hosts (or [windows equivalent](http://www.howtogeek.com/howto/27350/beginner-geek-how-to-edit-your-hosts-file/)) so you can access it "over the web":
 
 ```
 ###ELMSLN development
