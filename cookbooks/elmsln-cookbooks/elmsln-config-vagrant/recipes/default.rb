@@ -12,7 +12,6 @@ when "debian", "ubuntu"
     code <<-EOH
     (rm -r -f /var/www/elmsln/config)
     EOH
-    not_if { File.exists?("/var/www/elmsln/config/scripts/drush-create-site/config.cfg") }
   end
   # check out this specific config
   git "/var/www/elmsln/config" do
