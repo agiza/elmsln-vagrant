@@ -69,7 +69,14 @@ when "debian", "ubuntu"
     apachectl -k restart
     EOH
   end
-  # enable drush function for bakery and piwik integration OOTB
+  # disable seckit as it can conflict needlessly in a vagrant instance
+  bash "drush-disable-seckit" do
+    code <<-EOH
+    cd /var/www/elmsln/domains/online
+    drush dis seckit --uri=online.elmsln.local --y
+    EOH
+  end
+  # enable drush function for bakery integration OOTB
   bash "drush-vagrant-bakery" do
     code <<-EOH
     cd /var/www/elmsln/domains/online
