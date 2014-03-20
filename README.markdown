@@ -1,12 +1,13 @@
 ELMSLN Vagrant package
 ==============
+[Watch how to use this!](https://www.youtube.com/watch?v=ZeuDKzs6sj0)
 ###What is this
 This is a Vagrant profile for installing a fully functioning [ELMS Learning Network](https://github.com/btopro/elmsln) in a single command!  This instance is purely for development purposes but you can follow the [installation instructions](https://github.com/btopro/elmsln/blob/master/INSTALL.txt) and bash scripts to install this on any real server!
 
 ###How to use this to bring up ELMSLN
 1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) (ensure you are on the latest version 4.0.8+)
 2. Install [Vagrant](http://www.vagrantup.com/downloads.html)
-3. Install [git] (http://git-scm.com/downloads) (recommended)
+3. Install [git](http://git-scm.com/downloads) (recommended)
 4. Download or Clone (`git clone https://github.com/btopro/elmsln-vagrant.git`) this project
 5. Spin up the vagrant instance:
 ```
