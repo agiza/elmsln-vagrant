@@ -1,6 +1,6 @@
 ELMSLN Vagrant package
 ==============
-[Watch how to use this!](https://www.youtube.com/watch?v=ZeuDKzs6sj0)
+[Watch how to use this!](https://www.youtube.com/watch?v=ZeuDKzs6sj0&list=PLJQupiji7J5fygec37Wd-gAbpMj8c5A_C)
 ###What is this
 This is a Vagrant profile for installing a fully functioning [ELMS Learning Network](https://github.com/btopro/elmsln) in a single command!  This instance is purely for development purposes but you can follow the [installation instructions](https://github.com/btopro/elmsln/blob/master/INSTALL.txt) and bash scripts to install this on any real server!
 
