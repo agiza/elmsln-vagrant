@@ -57,6 +57,7 @@ when "debian", "ubuntu"
     printf "alias d='drush'\n" >> /home/vagrant/.bashrc
     printf "alias g='git'\n" >> /home/vagrant/.bashrc
     printf "alias l='ls -lah'\n\n" >> /home/vagrant/.bashrc
+    chmod 744 /usr/local/bin/drush-create-site/rm-site.sh
     EOH
   end
   # force some settings to be as such by writing to the end of those files
