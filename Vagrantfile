@@ -25,6 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "10.0.0.13"
   config.vm.network "private_network", ip: "10.0.0.14"
   config.vm.network "private_network", ip: "10.0.0.15"
+  config.vm.network "private_network", ip: "10.0.0.16"
   # forward the vm ports for database and apache to local ones
   config.vm.network "forwarded_port", guest: 80, host: 80
   config.vm.network "forwarded_port", guest: 3306, host: 3306
@@ -56,7 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_role("elmsln_subbox")
   end
   # share vargrant config w/ the server, this is only mildly useful though
-  config.vm.synced_folder ".", "/vagrant"
+  #config.vm.synced_folder ".", "/vagrant"
 
   # all done! tell them how to login
   config.vm.provision "shell",
