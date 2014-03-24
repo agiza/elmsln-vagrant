@@ -26,6 +26,7 @@ vagrant up
 10.0.0.13       analytics.elmsln.local
 10.0.0.14       studio.elmsln.local
 10.0.0.15       interact.elmsln.local
+10.0.0.16       blog.elmsln.local
 
 # backend webservices addresses
 10.0.0.10       data.courses.elmsln.local
@@ -33,6 +34,7 @@ vagrant up
 10.0.0.12       data.online.elmsln.local
 10.0.0.14       data.studio.elmsln.local
 10.0.0.15       data.interact.elmsln.local
+10.0.0.16       blog.elmsln.local
 ```
 
 Now you'll be able to jump into any of the domains that ELMSLN starts to establish for use!  Go to http://online.elmsln.local/ after installation completes (grab a coffee, it takes awhile the first time to finish).  If it all worked you should see a new Drupal site running the Course Information System (CIS) distribution.

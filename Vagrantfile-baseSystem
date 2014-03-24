@@ -20,13 +20,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "10.0.0.13"
   config.vm.network "private_network", ip: "10.0.0.14"
   config.vm.network "private_network", ip: "10.0.0.15"
+  config.vm.network "private_network", ip: "10.0.0.16"
 
   config.vm.network "forwarded_port", guest: 80, host: 80
   config.vm.network "forwarded_port", guest: 3306, host: 3306
 
-  # Try to use NFS only on platforms other than Windows
-  nfs = !Kernel.is_windows?
-  config.vm.synced_folder ".", "/vagrant", type: "nfs"
+  # mount directory
+  config.vm.synced_folder ".", "/vagrant"
 
   config.vm.provider "virtualbox" do |v|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
@@ -53,7 +53,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         :bind_address => "0.0.0.0"
       },
       :hosts => {
-        :localhost_aliases => ["online", "courses", "studio", "interact", "analytics", "media"]
+        :localhost_aliases => ["online", "courses", "studio", "interact", "analytics", "media", "blog"]
       },
       :drush => {
         :install_method => 'pear',
