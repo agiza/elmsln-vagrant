@@ -50,14 +50,18 @@ when "debian", "ubuntu"
     (ln -s /var/www/elmsln/scripts/drush-create-site /usr/local/bin/drush-create-site)
     EOH
   end
-  # shortcut for drush-remove-site script
-  bash "drush-remove-site-sym" do
+  # shortcut for drs and other developer shorthand for root and vagrant
+  bash "alias-shortcuts" do
     code <<-EOH
-    printf "\n\nalias drs='/usr/local/bin/drush-create-site/rm-site.sh'\n" >> /home/vagrant/.bashrc
     printf "alias d='drush'\n" >> /home/vagrant/.bashrc
     printf "alias g='git'\n" >> /home/vagrant/.bashrc
     printf "alias l='ls -lah'\n\n" >> /home/vagrant/.bashrc
+    printf "\n\nalias drs='/usr/local/bin/drush-create-site/rm-site.sh'\n" >> /root/.bashrc
+    printf "alias d='drush'\n" >> /root/.bashrc
+    printf "alias g='git'\n" >> /root/.bashrc
+    printf "alias l='ls -lah'\n\n" >> /root/.bashrc
     chmod 744 /usr/local/bin/drush-create-site/rm-site.sh
+    ln -s /var/www/elmsln /root/elmsln
     EOH
   end
   # force some settings to be as such by writing to the end of those files
