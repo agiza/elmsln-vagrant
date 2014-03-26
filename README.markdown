@@ -31,7 +31,8 @@ This is a Vagrant profile for installing a fully functioning [ELMS Learning Netw
 10.0.0.15       data.interact.elmsln.local
 10.0.0.16       blog.elmsln.local
 ```
-6. Spin up the vagrant instance:
+
+###Spin up the vagrant instance
 ```
 cd elmsln-vagrant
 vagrant up
