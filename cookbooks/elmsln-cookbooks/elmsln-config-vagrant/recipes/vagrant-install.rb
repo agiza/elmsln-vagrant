@@ -64,16 +64,6 @@ when "debian", "ubuntu"
     ln -s /var/www/elmsln /root/elmsln
     EOH
   end
-  # force some settings to be as such by writing to the end of those files
-  bash "last-minute-config-tweaks" do
-    code <<-EOH
-    cat /var/www/elmsln/docs/php.txt >> /etc/php5/apache2/php.ini
-    cat /var/www/elmsln/docs/apc.txt >> /etc/php5/apache2/conf.d/apc.ini
-    cat /var/www/elmsln/docs/my.txt >> /etc/php5/apache2/conf.d/mysql.ini
-    cat /var/www/elmsln/docs/my.txt >> /etc/php5/apache2/conf.d/mysqli.ini
-    apachectl -k restart
-    EOH
-  end
   # disable seckit as it can conflict needlessly in a vagrant instance
   bash "drush-disable-seckit" do
     code <<-EOH
