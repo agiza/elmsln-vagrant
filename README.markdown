@@ -9,12 +9,7 @@ This is a Vagrant profile for installing a fully functioning [ELMS Learning Netw
 2. Install [Vagrant](http://www.vagrantup.com/downloads.html)
 3. Install [git](http://git-scm.com/downloads) (recommended)
 4. Download or Clone (`git clone https://github.com/btopro/elmsln-vagrant.git`) this project
-5. Spin up the vagrant instance:
-```
-cd elmsln-vagrant
-vagrant up
-```
-6. Add this line to your /etc/hosts (or [windows equivalent](http://www.howtogeek.com/howto/27350/beginner-geek-how-to-edit-your-hosts-file/)) so you can access it "over the web":
+5. Add this line to your /etc/hosts (or [windows equivalent](http://www.howtogeek.com/howto/27350/beginner-geek-how-to-edit-your-hosts-file/)) so you can access it "over the web":
 
 ```
 ###ELMSLN development
@@ -35,6 +30,11 @@ vagrant up
 10.0.0.14       data.studio.elmsln.local
 10.0.0.15       data.interact.elmsln.local
 10.0.0.16       blog.elmsln.local
+```
+6. Spin up the vagrant instance:
+```
+cd elmsln-vagrant
+vagrant up
 ```
 
 Now you'll be able to jump into any of the domains that ELMSLN starts to establish for use!  Go to http://online.elmsln.local/ after installation completes (grab a coffee, it takes awhile the first time to finish).  If it all worked you should see a new Drupal site running the Course Information System (CIS) distribution.
