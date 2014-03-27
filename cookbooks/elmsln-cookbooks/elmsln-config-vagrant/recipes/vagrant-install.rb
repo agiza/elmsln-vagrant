@@ -71,6 +71,13 @@ when "debian", "ubuntu"
     drush dis seckit --uri=online.elmsln.local --y
     EOH
   end
+  # enable vagrant_cis_dev for streamlining development
+  bash "drush-enable-vagrant-cis-dev" do
+    code <<-EOH
+    cd /var/www/elmsln/domains/online
+    drush en vagrant_cis_dev --uri=online.elmsln.local --y
+    EOH
+  end
   # enable drush function for bakery integration OOTB
   bash "drush-vagrant-bakery" do
     code <<-EOH
