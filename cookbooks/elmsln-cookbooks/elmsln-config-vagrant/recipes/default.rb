@@ -8,11 +8,14 @@
 case node[:platform]
 when "debian", "ubuntu"
   # wipe current config directory and repull elmsln project as a whole
-  bash "remove-default-elmsln-config" do
+  # this is a hard reset of the branch to avoid conflicts w/ past editions
+  bash "rebuild-elmsln-default" do
     code <<-EOH
     (
-      rm -r -f /var/www/elmsln/config
-      git pull origin master
+      rm -r -f /var/www/elmsln
+      cd /var/www
+      git clone git://github.com/btopro/elmsln.git elmsln
+      cd elmsln
       rm -r -f /var/www/elmsln/config
     )
     EOH
