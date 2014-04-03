@@ -7,10 +7,14 @@
 
 case node[:platform]
 when "debian", "ubuntu"
-  # wipe current config directory
+  # wipe current config directory and repull elmsln project as a whole
   bash "remove-default-elmsln-config" do
     code <<-EOH
-    (rm -r -f /var/www/elmsln/config)
+    (
+      rm -r -f /var/www/elmsln/config
+      git pull origin master
+      rm -r -f /var/www/elmsln/config
+    )
     EOH
   end
   # check out this specific config
