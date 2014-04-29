@@ -7,6 +7,15 @@
 
 case node[:platform]
 when "debian", "ubuntu"
+  # update server packages and install audio conversion packages
+  bash "enable-audio-processing" do
+    code <<-EOH
+    (
+      yes | sudo apt-get update
+      yes | sudo apt-get install libav-tools libavcodec-extra-53
+    )
+    EOH
+  end
   # apply correct directory permissions for online site
   directory "/var/www/elmsln/config/private_files" do
     mode 0755
@@ -78,7 +87,7 @@ when "debian", "ubuntu"
     drush en vagrant_cis_dev --uri=online.elmsln.local --y
     EOH
   end
-  # enable vagrant_cis_dev for streamlining development
+  # enable cis_examples for streamlining development
   bash "drush-enable-vagrant-cis-dev" do
     code <<-EOH
     cd /var/www/elmsln/domains/online
